@@ -4,8 +4,9 @@ using namespace std;
 
 Automata::Automata(void)
 {
-	printState();
 
+ 
+	
 	prices[0] = 32;
 	prices[1] = 25;
 	prices[2] = 55;
@@ -15,7 +16,8 @@ Automata::Automata(void)
 	menu[1] = "Tea";
 	menu[2] = "Pepsi";
 	menu[3] = "Milk";
-
+		
+	printState();
 	state = off;
 
 	cash = 0;
@@ -144,51 +146,3 @@ void Automata::on()
 
 void Automata::printState()
 {
-	switch (state) 
-	{
-	case(off):
-		cout << "The machine does not work" << endl;
-		on();
-		break;
-
-	case(wait):
-		cout << "Wait... " << endl;
-
-	case(accept):
-		cout << "Insert money" << endl; 
-		cin >> usermoney;
-		system("cls");
-		if (usermoney < 1000)
-		{
-			coin(usermoney);
-			printMenu();
-			cout << "Choose a drink" << endl;
-			cin >> numb;
-			system("cls");
-			choice(numb);
-			break;
-		}
-			else 
-		{
-			cout << "Maximum cash = 1000.\nEnter the amount again" << endl;
-			cin >> usermoney;
-			coin(usermoney);
-			printMenu();
-			cout << "Choose a drink" << endl;
-			cin >> numb;
-			system("cls");
-			choice(numb);
-			
-		}
-
-	case(STATES::check):
-		cout << "Wait... We check the funds on the account" << endl;
-		check();
-		break;
-
-	case(STATES::cook):
-		cout << "Cooking... Cooking " << endl;
-		finish();
-		break;
-	}
-}
